@@ -18,7 +18,7 @@ public interface FirebaseHelper {
 
     boolean checkIfUserIsOnline();
 
-    void logTheTestUserOut();
+    void logTheUserOut();
 
     void changeUsernameForCurrentUser();
 

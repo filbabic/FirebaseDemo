@@ -29,4 +29,5 @@
     <item name="upload_a_photo_button" type="id" />
     <item name="photo_image_view" type="id" />
     <item name="uploading_progress_bar" type="id" />
+    <item name="database_activity_frame_layout" type="id" />
 </resources>

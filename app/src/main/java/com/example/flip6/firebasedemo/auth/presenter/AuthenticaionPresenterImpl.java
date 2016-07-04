@@ -45,7 +45,7 @@ public class AuthenticaionPresenterImpl implements AuthenticationPresenter, Resp
 
     @Override
     public void logOutTheUser() {
-        firebaseHelper.logTheTestUserOut();
+        firebaseHelper.logTheUserOut();
     }
 
     @Override

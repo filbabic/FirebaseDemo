@@ -49,6 +49,6 @@ public class DatabasePresenterImpl implements DatabasePresenter {
 
     @Override
     public void logTheUserOut() {
-        firebaseHelper.logTheTestUserOut();
+        firebaseHelper.logTheUserOut();
     }
 }

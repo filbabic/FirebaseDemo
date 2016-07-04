@@ -20,7 +20,7 @@
         <activity android:name=".auth.view.AuthenticationActivity" />
         <activity android:name=".crash.CrashActivity" />
         <activity android:name=".remote.view.RemoteConfigActivity" />
-        <activity android:name=".database.view.DatabaseActivity" />
+        <activity android:name=".database.view.DatabaseActivity"/>
         <activity android:name=".storage.view.StorageActivity" />
 
         <service android:name=".gcm.MyMessagingService">

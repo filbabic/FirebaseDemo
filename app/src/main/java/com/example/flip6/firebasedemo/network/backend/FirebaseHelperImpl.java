@@ -119,7 +119,7 @@ public class FirebaseHelperImpl implements FirebaseHelper {
     }
 
     @Override
-    public void logTheTestUserOut() {
+    public void logTheUserOut() {
         firebaseAuth.signOut();
     }
 

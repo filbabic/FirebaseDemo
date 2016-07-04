@@ -63,6 +63,6 @@ public class CrashActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void callMethodOnANullObject() {
-        helper.logTheTestUserOut();
+        helper.logTheUserOut();
     }
 }

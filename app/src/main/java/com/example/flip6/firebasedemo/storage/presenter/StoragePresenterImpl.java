@@ -78,6 +78,6 @@ public class StoragePresenterImpl implements StoragePresenter {
 
     @Override
     public void logTheTestUserOut() {
-        firebaseHelper.logTheTestUserOut();
+        firebaseHelper.logTheUserOut();
     }
 }
