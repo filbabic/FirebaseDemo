@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="request_button" type="id" />
-    <item name="crash_button" type="id" />
+    <item name="wrong_reference_button" type="id" />
     <item name="message_display_text_view" type="id" />
     <item name="author_display_text_view" type="id" />
     <item name="username_edit_text" type="id" />

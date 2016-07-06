@@ -31,4 +31,7 @@
     <string name="no_photo_to_upload_toast">No photo to upload!</string>
     <string name="storage">Storage</string>
     <string name="successful_upload_toast">Upload successful!</string>
+    <string name="item_discount">Item is on %1$f discount.</string>
+    <string name="item_is_not_on_discount">Item is not on discount!</string>
+    <string name="bad_request_button">Bad request</string>
 </resources>
