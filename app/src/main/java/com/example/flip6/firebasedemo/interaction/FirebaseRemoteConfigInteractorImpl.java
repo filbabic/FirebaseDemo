@@ -1,10 +1,6 @@
 package com.example.flip6.firebasedemo.interaction;
 
-import android.support.annotation.NonNull;
-
 import com.example.flip6.firebasedemo.common.constants.Constants;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 /**
@@ -30,13 +26,5 @@ public class FirebaseRemoteConfigInteractorImpl implements FirebaseRemoteConfigI
 
     @Override
     public void syncWithBackend() {
-        remoteConfig.fetch(0).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) { // 0 for cache expiry
-                if (task.isSuccessful()) {
-                    remoteConfig.activateFetched();
-                }
-            }
-        });
     }
 }

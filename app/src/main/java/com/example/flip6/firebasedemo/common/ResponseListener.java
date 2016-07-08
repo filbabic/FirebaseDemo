@@ -6,5 +6,5 @@ package com.example.flip6.firebasedemo.common;
 public interface ResponseListener {
     void onSuccessfulAuthentication();
 
-    void onFailedAuthentication(String attemptedOperation);
+    void onFailedAuthentication();
 }

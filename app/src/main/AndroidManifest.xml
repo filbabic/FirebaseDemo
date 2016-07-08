@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.requests.RequestActivity" />
+        <activity android:name=".ui.request.RequestActivity" />
         <activity android:name=".ui.crash.CrashActivity" />
         <activity android:name=".ui.remote.RemoteConfigActivity" />
         <activity android:name=".ui.chat.ChatActivity" />

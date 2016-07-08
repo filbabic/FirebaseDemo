@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="toolbar" type="id" />
     <item name="request_button" type="id" />
     <item name="wrong_reference_button" type="id" />
     <item name="message_display_text_view" type="id" />
@@ -28,6 +29,21 @@
     <item name="take_a_photo_button" type="id" />
     <item name="upload_a_photo_button" type="id" />
     <item name="photo_image_view" type="id" />
-    <item name="uploading_progress_bar" type="id" />
-    <item name="database_activity_frame_layout" type="id" />
+    <item name="progress_bar" type="id" />
+    <item name="chat_activity_frame_layout" type="id" />
+    <item name="chat_recycler_view" type="id" />
+    <item name="chat_message_image_view" type="id" />
+    <item name="chat_message_author_text_view" type="id" />
+    <item name="chat_message_message_text_view" type="id" />
+    <item name="register_activity_frame_layout" type="id" />
+    <item name="button_choose_username" type="id" />
+
+    <item name="drawer_layout" type="id" />
+    <item name="navigation_drawer" type="id" />
+    <item name="menu_crash_activity" type="id" />
+    <item name="menu_storage_activity" type="id" />
+    <item name="menu_register_activity" type="id" />
+    <item name="menu_chat_activity" type="id" />
+    <item name="menu_remote_activity" type="id" />
+    <item name="menu_request_activity" type="id" />
 </resources>

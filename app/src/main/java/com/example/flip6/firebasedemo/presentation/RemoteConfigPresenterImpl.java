@@ -18,13 +18,17 @@ public class RemoteConfigPresenterImpl implements RemoteConfigPresenter {
 
     @Override
     public void fetchRemoteConfigValues() {
-        firebaseRemoteConfigInteractor.syncWithBackend();
         if (firebaseRemoteConfigInteractor.isItemOnDiscount()) {
             remoteConfigView.setItemIsOnDiscount(true);
             remoteConfigView.setItemDiscount(firebaseRemoteConfigInteractor.getItemDiscount());
         } else {
             remoteConfigView.setItemIsNotOnDiscount();
         }
+    }
+
+    @Override
+    public void syncDataWithBackend() {
+        firebaseRemoteConfigInteractor.syncWithBackend();
     }
 
     @Override

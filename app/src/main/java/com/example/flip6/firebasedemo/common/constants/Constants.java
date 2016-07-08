@@ -5,11 +5,10 @@ package com.example.flip6.firebasedemo.common.constants;
  */
 public class Constants {
     public static final int IMAGE_CAPTURE_CODE = 1;
-    public static final String OPERATION_LOG_IN = "log in";
-    public static final String OPERATION_REGISTER = "register";
-
     public static final String IS_ON_DISCOUNT = "is_on_discount";
     public static final String DISCOUNT_AMOUNT = "discount_amount";
-    public static final String USERNAME_KEY = "username";
-    public static final String USERNAME_IMAGE_KEY = "image";
+    public static final String IMAGE_KEY = "data";
+
+    public static final String USERNAME_BUNDLE_KEY = "username";
+    public static final String USER_IMAGE_BUNDLE_KEY = "image";
 }

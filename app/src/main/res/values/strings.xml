@@ -34,4 +34,26 @@
     <string name="item_discount">Item is on %1$f discount.</string>
     <string name="item_is_not_on_discount">Item is not on discount!</string>
     <string name="bad_request_button">Bad request</string>
+    <string name="crash_menu">Crash</string>
+    <string name="chat_menu">Chat</string>
+    <string name="register_menu">Register</string>
+    <string name="remote_menu">Remote</string>
+    <string name="storage_menu">Storage</string>
+    <string name="request_menu">Request</string>
+    <string name="welcome_screen_message">Welcome to FirebaseDemo app, swipe the navigation drawer to gain access to features</string>
+    <string name="failed_to_upload_image_toast">Failed to upload image.</string>
+    <string name="invalid_login_toast_message">Invalid account details.</string>
+    <string name="successful_login_toast_message">Successfully logged in!</string>
+    <string name="register_activity_title">Register new User</string>
+    <string name="choose_username_text_view_message">Choose a username to represent you</string>
+    <string name="username_edit_text_hint">e.g. myusername123</string>
+    <string name="choose_username_button_text">Choose</string>
+    <string name="email_edit_text_hint">e.g. test@test.com</string>
+    <string name="password_edit_text_hint">e.g password123</string>
+    <string name="invalid_register_toast_message">Email and/or password invalid!</string>
+    <string name="successful_register_toast_message">Successfully registered!</string>
+    <string name="fields_are_emtpy_toast_message">All fields must be filled in!</string>
+    <string name="chat_activity_title">Chat</string>
+    <string name="remote_config_activity_title">Remote config</string>
+    <string name="request_activity_title">Request</string>
 </resources>

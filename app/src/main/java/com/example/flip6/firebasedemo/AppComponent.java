@@ -1,7 +1,15 @@
 package com.example.flip6.firebasedemo;
 
 import com.example.flip6.firebasedemo.presentation.PresentationModule;
-import com.example.flip6.firebasedemo.ui.requests.RequestActivity;
+import com.example.flip6.firebasedemo.ui.chat.ChatActivity;
+import com.example.flip6.firebasedemo.ui.chat.ChatAuthFragment;
+import com.example.flip6.firebasedemo.ui.chat.ChatLobbyFragment;
+import com.example.flip6.firebasedemo.ui.crash.CrashActivity;
+import com.example.flip6.firebasedemo.ui.main.MainActivity;
+import com.example.flip6.firebasedemo.ui.registration.ChooseUsernameFragment;
+import com.example.flip6.firebasedemo.ui.registration.UserAccountDetailsFragment;
+import com.example.flip6.firebasedemo.ui.remote.RemoteConfigActivity;
+import com.example.flip6.firebasedemo.ui.request.RequestActivity;
 import com.example.flip6.firebasedemo.ui.registration.UserImageFragment;
 
 import javax.inject.Singleton;
@@ -19,4 +27,20 @@ public interface AppComponent {
     void inject(RequestActivity requestActivity);
 
     void inject(UserImageFragment userImageFragment);
+
+    void inject(MainActivity mainActivity);
+
+    void inject(RemoteConfigActivity remoteConfigActivity);
+
+    void inject(ChatLobbyFragment chatLobbyFragment);
+
+    void inject(CrashActivity crashActivity);
+
+    void inject(ChatActivity chatActivity);
+
+    void inject(ChatAuthFragment chatAuthFragment);
+
+    void inject(UserAccountDetailsFragment userAccountDetailsFragment);
+
+    void inject(ChooseUsernameFragment chooseUsernameFragment);
 }

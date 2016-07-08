@@ -7,4 +7,6 @@ import com.example.flip6.firebasedemo.view.RemoteConfigView;
  */
 public interface RemoteConfigPresenter extends Presenter<RemoteConfigView> {
     void fetchRemoteConfigValues();
+
+    void syncDataWithBackend();
 }

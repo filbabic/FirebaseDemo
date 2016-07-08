@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@id/menu_crash_activity"
+        android:icon="@drawable/ic_error_black_24dp"
+        android:orderInCategory="100"
+        android:title="@string/crash_menu"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@id/menu_chat_activity"
+        android:icon="@drawable/ic_chat_black_24dp"
+        android:orderInCategory="200"
+        android:title="@string/chat_menu"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@id/menu_register_activity"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:orderInCategory="300"
+        android:title="@string/register_menu"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@id/menu_remote_activity"
+        android:icon="@drawable/ic_shuffle_black_24dp"
+        android:orderInCategory="400"
+        android:title="@string/remote_menu"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@id/menu_request_activity"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:orderInCategory="600"
+        android:title="@string/request_menu"
+        app:showAsAction="ifRoom" />
+</menu>

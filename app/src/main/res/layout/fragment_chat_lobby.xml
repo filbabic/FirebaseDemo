@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/chat_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp">
+
+            <EditText
+                android:id="@id/message_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:hint="@string/enter_your_message"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:id="@id/send_message_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/send" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

@@ -2,10 +2,11 @@ package com.example.flip6.firebasedemo.ui.remote;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.flip6.firebasedemo.App;
 import com.example.flip6.firebasedemo.R;
 import com.example.flip6.firebasedemo.presentation.RemoteConfigPresenter;
 import com.example.flip6.firebasedemo.ui.base.BaseActivity;
@@ -23,6 +24,9 @@ import butterknife.ButterKnife;
  */
 
 public class RemoteConfigActivity extends BaseActivity implements RemoteConfigView {
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
     @BindView(R.id.remote_config_text_view)
     TextView mRemoteConfigTextView;
 
@@ -35,13 +39,11 @@ public class RemoteConfigActivity extends BaseActivity implements RemoteConfigVi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_remote);
         ButterKnife.bind(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        presenter.fetchRemoteConfigValues();
+        App.get().component().inject(this);
+        prepareData();
+        initUI();
     }
 
     @Override
@@ -62,11 +64,13 @@ public class RemoteConfigActivity extends BaseActivity implements RemoteConfigVi
 
     @Override
     protected void prepareData() {
-
+        presenter.setView(this);
+        presenter.syncDataWithBackend();
     }
 
     @Override
     protected void initUI() {
-
+        mToolbar.setTitle(R.string.remote_config_activity_title);
+        presenter.fetchRemoteConfigValues();
     }
 }

@@ -1,9 +1,6 @@
 package com.example.flip6.firebasedemo.interaction;
 
-
-import android.graphics.Bitmap;
-
-import com.example.flip6.firebasedemo.common.ResponseListener;
+import com.example.flip6.firebasedemo.common.RequestListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 /**
@@ -18,8 +15,7 @@ public class FirebaseStorageInteractorImpl implements FirebaseStorageInteractor 
     }
 
     @Override
-    public void uploadImageToStorage(Bitmap imageToSend, final ResponseListener listener) {
+    public void uploadImageToStorage(byte[] imageBytes, RequestListener<String> listener) {
+
     }
 }
-
-//        imageToSend.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);

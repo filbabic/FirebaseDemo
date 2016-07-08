@@ -2,35 +2,39 @@ package com.example.flip6.firebasedemo.ui.chat;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.FrameLayout;
+import android.support.v7.widget.Toolbar;
 
+import com.example.flip6.firebasedemo.App;
 import com.example.flip6.firebasedemo.R;
-import com.example.flip6.firebasedemo.presentation.DatabaseActivityPresenter;
+import com.example.flip6.firebasedemo.presentation.ChatPresenter;
 import com.example.flip6.firebasedemo.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Filip on 04/07/2016.
  */
 public class ChatActivity extends BaseActivity {
-
-    @BindView(R.id.database_activity_frame_layout)
-    FrameLayout frameLayout;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Inject
-    DatabaseActivityPresenter presenter;
+    ChatPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_database);
+        setContentView(R.layout.activity_chat);
+        ButterKnife.bind(this);
+        App.get().component().inject(this);
         if (savedInstanceState == null) {
             initFragment();
-            presenter.logTheUserOut();
         }
+        prepareData();
+        initUI();
     }
 
     @Override
@@ -42,17 +46,17 @@ public class ChatActivity extends BaseActivity {
     protected void initFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.database_activity_frame_layout, new ChatAuthFragment())
+                .replace(R.id.chat_activity_frame_layout, new ChatAuthFragment())
                 .commit();
     }
 
     @Override
     protected void prepareData() {
-
+        presenter.logTheUserOut();
     }
 
     @Override
     protected void initUI() {
-
+        mToolbar.setTitle(R.string.chat_activity_title);
     }
 }

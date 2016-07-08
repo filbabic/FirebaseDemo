@@ -1,5 +1,6 @@
 package com.example.flip6.firebasedemo.presentation;
 
+import com.example.flip6.firebasedemo.interaction.FirebaseAuthenticationInteractor;
 import com.example.flip6.firebasedemo.interaction.FirebaseModule;
 import com.example.flip6.firebasedemo.interaction.FirebaseDatabaseInteractor;
 import com.example.flip6.firebasedemo.interaction.FirebaseStorageInteractor;
@@ -24,7 +25,42 @@ public class PresentationModule {
     }
 
     @Provides
-    public StoragePresenter provideStoragePresenter(FirebaseStorageInteractor firebaseStorageInteractor) {
-        return new StoragePresenterImpl(firebaseStorageInteractor);
+    public UserImagePresenter provideUserImagePresenter(FirebaseStorageInteractor firebaseStorageInteractor) {
+        return new UserImagePresenterImpl(firebaseStorageInteractor);
+    }
+
+    @Provides
+    public MainPresenter provideMainPresenter() {
+        return new MainPresenterImpl();
+    }
+
+    @Provides
+    public ChatPresenter provideChatPresenter(FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
+        return new ChatPresenterImpl(firebaseAuthenticationInteractor);
+    }
+
+    @Provides
+    public ChatAuthenticationPresenter provideChatAuthenticationPresenter(FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
+        return new ChatAuthenticationPresenterImpl(firebaseAuthenticationInteractor);
+    }
+
+    @Provides
+    public ChatLobbyPresenter provideChatLobbyPresenter(FirebaseDatabaseInteractor firebaseDatabaseInteractor, FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
+        return new ChatLobbyPresenterImpl(firebaseAuthenticationInteractor, firebaseDatabaseInteractor);
+    }
+
+    @Provides
+    public CrashPresenter provideCrashPresenter() {
+        return new CrashPresenterImpl();
+    }
+
+    @Provides
+    public ChooseUsernamePresenter provideChooseUsernamePresenter() {
+        return new ChooseUsernamePresenterImpl();
+    }
+
+    @Provides
+    public UserAccountDetailsPresenter provideUserAccountDetailsPresenter(FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
+        return new UserAccountDetailsPresenterImpl(firebaseAuthenticationInteractor);
     }
 }

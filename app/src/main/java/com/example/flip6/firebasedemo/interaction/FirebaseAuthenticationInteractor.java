@@ -17,5 +17,7 @@ public interface FirebaseAuthenticationInteractor {
 
     String getLoggedInUserDisplayName();
 
-    void changeCurrentUserDisplayName(String usernameToSet);
+    void changeUserProfileData(String usernameToSet, String userImageURL);
+
+    String getLoggedInUserImageURL();
 }
