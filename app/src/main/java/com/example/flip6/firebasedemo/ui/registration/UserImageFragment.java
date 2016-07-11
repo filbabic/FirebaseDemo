@@ -60,10 +60,15 @@ public class UserImageFragment extends BaseFragment implements View.OnClickListe
         App.get().component().inject(this);
         ButterKnife.bind(this, view);
         initUI();
+        prepareData();
     }
 
     private void initUI() {
         mTakeAPhotoButton.setOnClickListener(this);
+    }
+
+    protected void prepareData(){
+        presenter.setView(this);
     }
 
     @Override

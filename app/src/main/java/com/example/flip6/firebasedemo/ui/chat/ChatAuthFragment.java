@@ -56,7 +56,7 @@ public class ChatAuthFragment extends BaseFragment implements ChatAuthView, View
         prepareData();
     }
 
-    private void prepareData() {
+    protected void prepareData() {
         presenter.setView(this);
     }
 

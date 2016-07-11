@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.*;
@@ -21,8 +22,10 @@ public class CrashPresenterImplIntegrationTest {
     @Mock
     private CrashView crashView;
 
+    private final int NO_INTERACTIONS_SWITCH_CASE = 5;
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new CrashPresenterImpl();
         presenter.setView(crashView);
     }
@@ -47,7 +50,7 @@ public class CrashPresenterImplIntegrationTest {
 
     @Test
     public void testHandleUserClickedButtonNoInteractions() throws Exception {
-        presenter.handleUserClickedButton(5);
+        presenter.handleUserClickedButton(NO_INTERACTIONS_SWITCH_CASE);
         verifyZeroInteractions(crashView);
     }
 }

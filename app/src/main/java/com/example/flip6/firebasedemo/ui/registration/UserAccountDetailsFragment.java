@@ -66,7 +66,7 @@ public class UserAccountDetailsFragment extends BaseFragment implements UserAcco
     private void prepareData() {
         presenter.setView(this);
         receiveBundleArguments();
-        presenter.logCurrentUserOut();//in case someone is already logged in
+        presenter.logCurrentUserOut(); //in case someone is already logged in
     }
 
     private void initUI(View view) {

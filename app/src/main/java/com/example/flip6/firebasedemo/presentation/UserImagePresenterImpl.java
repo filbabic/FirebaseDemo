@@ -20,6 +20,16 @@ public class UserImagePresenterImpl implements UserImagePresenter {
     }
 
     @Override
+    public void setView(UserImageView view) {
+        this.userImageView = view;
+    }
+
+    @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
     public void handleOnUserClickedTakeAPhotoButton() {
         userImageView.startTakeAPhotoActivity();
     }
@@ -30,11 +40,6 @@ public class UserImagePresenterImpl implements UserImagePresenter {
             userImageView.showUploadingProgressBar();
             storageInteractor.uploadImageToStorage(imageByteArray, bindImageUploadResponseListener());
         }
-    }
-
-    @Override
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     protected RequestListener<String> bindImageUploadResponseListener() {
@@ -54,8 +59,4 @@ public class UserImagePresenterImpl implements UserImagePresenter {
         };
     }
 
-    @Override
-    public void setView(UserImageView view) {
-        this.userImageView = view;
-    }
 }

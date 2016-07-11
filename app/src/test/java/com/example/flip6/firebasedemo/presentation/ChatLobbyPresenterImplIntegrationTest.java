@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.*;
@@ -34,8 +35,11 @@ public class ChatLobbyPresenterImplIntegrationTest {
     @Mock
     private DataSnapshot dataSnapshot;
 
+    private final String VALID_MESSAGE = "message";
+
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new ChatLobbyPresenterImpl(authenticationInteractor, databaseInteractor);
         presenter.setView(chatLobbyView);
     }
@@ -49,12 +53,20 @@ public class ChatLobbyPresenterImplIntegrationTest {
     @Test
     public void testSendChatMessageStringIsNull() throws Exception {
         presenter.sendChatMessage(null);
-        verifyZeroInteractions(authenticationInteractor, chatLobbyView, databaseInteractor);
+        verify(chatLobbyView).showMessageCannotBeEmpty();
+        verifyNoMoreInteractions(authenticationInteractor, chatLobbyView, databaseInteractor);
+    }
+
+    @Test
+    public void testSendChatMessageStringIsEmpty() throws Exception {
+        presenter.sendChatMessage("   ");
+        verify(chatLobbyView).showMessageCannotBeEmpty();
+        verifyNoMoreInteractions(authenticationInteractor, chatLobbyView, databaseInteractor);
     }
 
     @Test
     public void testSendChatMessageStringIsValid() throws Exception {
-        presenter.sendChatMessage("message");
+        presenter.sendChatMessage(VALID_MESSAGE);
         verify(authenticationInteractor).getLoggedInUserDisplayName();
         verify(authenticationInteractor).getLoggedInUserImageURL();
         verify(databaseInteractor).sendMessage(anyString(), anyString(), anyString());

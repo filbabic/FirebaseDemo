@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.*;
@@ -26,6 +27,7 @@ public class RemoteConfigPresenterImplIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new RemoteConfigPresenterImpl(remoteConfigInteractor);
         presenter.setView(remoteConfigView);
     }
@@ -43,6 +45,7 @@ public class RemoteConfigPresenterImplIntegrationTest {
         presenter.fetchRemoteConfigValues();
         verify(remoteConfigInteractor).isItemOnDiscount();
         verify(remoteConfigView).setItemIsNotOnDiscount();
+        verifyNoMoreInteractions(remoteConfigInteractor, remoteConfigView);
     }
 
     @Test
@@ -53,5 +56,6 @@ public class RemoteConfigPresenterImplIntegrationTest {
         verify(remoteConfigInteractor).isItemOnDiscount();
         verify(remoteConfigView).setItemIsOnDiscount(anyBoolean());
         verify(remoteConfigView).setItemDiscount(anyFloat());
+        verifyNoMoreInteractions(remoteConfigView, remoteConfigInteractor);
     }
 }

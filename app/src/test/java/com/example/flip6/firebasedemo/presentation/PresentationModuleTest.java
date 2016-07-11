@@ -8,6 +8,7 @@ import com.example.flip6.firebasedemo.interaction.FirebaseStorageInteractor;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.*;
 
@@ -30,6 +31,7 @@ public class PresentationModuleTest {
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presentationModule = new PresentationModule();
     }
 

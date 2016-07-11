@@ -19,7 +19,7 @@ public class ChatAuthenticationPresenterImpl implements ChatAuthenticationPresen
 
     @Override
     public void logTheUserIn(String email, String password) {
-        if (!StringUtils.StringEmptyOrNull(email, password)) {
+        if (!StringUtils.stringEmptyOrNull(email, password)) {
             chatAuthView.showProgressBar();
             firebaseAuthenticationInteractor.logTheUserIn(email, password, bindLoginListener());
         } else {

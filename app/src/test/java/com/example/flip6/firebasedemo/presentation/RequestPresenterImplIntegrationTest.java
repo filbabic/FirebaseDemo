@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.*;
@@ -27,6 +28,7 @@ public class RequestPresenterImplIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new RequestPresenterImpl(databaseInteractor);
         presenter.setView(requestView);
     }
@@ -35,18 +37,21 @@ public class RequestPresenterImplIntegrationTest {
     public void testRequestFromValidLink() throws Exception {
         presenter.requestFromValidLink();
         verify(databaseInteractor).requestFromValidLink(any(RequestListener.class));
+        verifyNoMoreInteractions(requestView, databaseInteractor);
     }
 
     @Test
     public void testRequestFromInvalidLink() throws Exception {
         presenter.requestFromInvalidLink();
         verify(databaseInteractor).requestFromInvalidLink(any(RequestListener.class));
+        verifyNoMoreInteractions(requestView, databaseInteractor);
     }
 
     @Test
     public void testBindMessageRequestListenerOnSuccessfulRequestMessageIsNull() throws Exception {
         presenter.bindMessageRequestListener().onSuccessfulRequest(null);
         verify(requestView).showOnWrongReferenceErrorMessage();
+        verifyNoMoreInteractions(requestView, databaseInteractor);
     }
 
     @Test
@@ -54,11 +59,13 @@ public class RequestPresenterImplIntegrationTest {
         presenter.bindMessageRequestListener().onSuccessfulRequest(new MessageModel());
         verify(requestView).setMessageAuthor(anyString());
         verify(requestView).setReceivedMessage(anyString());
+        verifyNoMoreInteractions(requestView, databaseInteractor);
     }
 
     @Test
     public void testBindMessageRequestListenerOnFailedRequest() throws Exception {
         presenter.bindMessageRequestListener().onFailedRequest();
         verify(requestView).showOnFailedToRequest();
+        verifyNoMoreInteractions(requestView, databaseInteractor);
     }
 }

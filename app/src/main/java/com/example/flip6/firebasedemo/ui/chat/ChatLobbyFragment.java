@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.flip6.firebasedemo.App;
 import com.example.flip6.firebasedemo.R;
@@ -62,7 +63,7 @@ public class ChatLobbyFragment extends BaseFragment implements ChatLobbyView, Vi
         prepareData();
     }
 
-    private void initUI(View view) {
+    protected void initUI(View view) {
         ButterKnife.bind(this, view);
         chatMessageAdapter = new ChatMessageAdapter();
         mChatRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -73,8 +74,8 @@ public class ChatLobbyFragment extends BaseFragment implements ChatLobbyView, Vi
     }
 
     protected void prepareData() {
-        presenter.getChatMessages();
         chatMessageAdapter.clearMessageList();
+        presenter.getChatMessages();
     }
 
     @Override
@@ -91,5 +92,10 @@ public class ChatLobbyFragment extends BaseFragment implements ChatLobbyView, Vi
     @Override
     public void addMessageToAdapter(MessageModel messageModel) {
         chatMessageAdapter.addMessageToAdapter(messageModel);
+    }
+
+    @Override
+    public void showMessageCannotBeEmpty() {
+        Toast.makeText(App.get(), R.string.fields_are_emtpy_toast_message, Toast.LENGTH_SHORT).show();
     }
 }

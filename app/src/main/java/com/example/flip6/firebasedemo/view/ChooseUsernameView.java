@@ -5,4 +5,6 @@ package com.example.flip6.firebasedemo.view;
  */
 public interface ChooseUsernameView {
     void proceedWithUserRegistration(String username);
+
+    void showUsernameCannotBeEmptyToast();
 }

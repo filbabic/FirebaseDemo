@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.*;
@@ -20,8 +21,11 @@ public class ChooseUsernamePresenterImplIntegrationTest {
     @Mock
     private ChooseUsernameView chooseUsernameView;
 
+    private final String VALID_USERNAME = "username";
+
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new ChooseUsernamePresenterImpl();
         presenter.setView(chooseUsernameView);
     }
@@ -29,16 +33,21 @@ public class ChooseUsernamePresenterImplIntegrationTest {
     @Test
     public void testHandleUserClickedChooseUsernameButtonStringIsNull() throws Exception {
         presenter.handleUserClickedChooseUsernameButton(null);
+        verify(chooseUsernameView).showUsernameCannotBeEmptyToast();
+        verifyNoMoreInteractions(chooseUsernameView);
     }
 
     @Test
     public void testHandleUserClickedChooseUsernameButtonStringIsEmpty() throws Exception {
         presenter.handleUserClickedChooseUsernameButton("   ");
+        verify(chooseUsernameView).showUsernameCannotBeEmptyToast();
+        verifyNoMoreInteractions(chooseUsernameView);
     }
 
     @Test
     public void testHandleUserClickedChooseUsernameButtonStringIsValid() throws Exception {
-        presenter.handleUserClickedChooseUsernameButton("username");
+        presenter.handleUserClickedChooseUsernameButton(VALID_USERNAME);
         verify(chooseUsernameView).proceedWithUserRegistration(anyString());
+        verifyNoMoreInteractions(chooseUsernameView);
     }
 }

@@ -21,16 +21,6 @@ public class UserAccountDetailsPresenterImpl implements UserAccountDetailsPresen
     }
 
     @Override
-    public void handleRegisterButtonClick(String email, String password) {
-        if (!StringUtils.StringEmptyOrNull(email, password)) {
-            userAccountDetailsView.showProgressBar();
-            firebaseAuthenticationInteractor.registerUser(email, password, bindUserRegisterListener());
-        } else {
-            userAccountDetailsView.showAllFieldsMustBeFilledMessage();
-        }
-    }
-
-    @Override
     public void setUsername(String username) {
         this.username = username;
     }
@@ -41,13 +31,23 @@ public class UserAccountDetailsPresenterImpl implements UserAccountDetailsPresen
     }
 
     @Override
-    public void logCurrentUserOut() {
-        firebaseAuthenticationInteractor.logTheUserOut();
+    public void setView(UserAccountDetailsView view) {
+        this.userAccountDetailsView = view;
     }
 
     @Override
-    public void setView(UserAccountDetailsView view) {
-        this.userAccountDetailsView = view;
+    public void handleRegisterButtonClick(String email, String password) {
+        if (!StringUtils.stringEmptyOrNull(email, password)) {
+            userAccountDetailsView.showProgressBar();
+            firebaseAuthenticationInteractor.registerUser(email, password, bindUserRegisterListener());
+        } else {
+            userAccountDetailsView.showAllFieldsMustBeFilledMessage();
+        }
+    }
+
+    @Override
+    public void logCurrentUserOut() {
+        firebaseAuthenticationInteractor.logTheUserOut();
     }
 
     protected ResponseListener bindUserRegisterListener() {

@@ -32,9 +32,9 @@ public class ChatActivity extends BaseActivity {
         App.get().component().inject(this);
         if (savedInstanceState == null) {
             initFragment();
+            prepareData();
+            initUI();
         }
-        prepareData();
-        initUI();
     }
 
     @Override

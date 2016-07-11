@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.flip6.firebasedemo.App;
 import com.example.flip6.firebasedemo.R;
@@ -82,5 +83,10 @@ public class ChooseUsernameFragment extends BaseFragment implements View.OnClick
                 .beginTransaction()
                 .replace(R.id.register_activity_frame_layout, UserImageFragment.newInstance(createBundleData(username)))
                 .commit();
+    }
+
+    @Override
+    public void showUsernameCannotBeEmptyToast() {
+        Toast.makeText(App.get(), R.string.fields_are_emtpy_toast_message, Toast.LENGTH_SHORT).show();
     }
 }

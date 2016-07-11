@@ -7,4 +7,6 @@ import com.example.flip6.firebasedemo.common.model.MessageModel;
  */
 public interface ChatLobbyView {
     void addMessageToAdapter(MessageModel messageModel);
+
+    void showMessageCannotBeEmpty();
 }

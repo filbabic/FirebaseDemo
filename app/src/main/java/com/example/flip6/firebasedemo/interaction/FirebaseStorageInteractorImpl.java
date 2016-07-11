@@ -16,6 +16,5 @@ public class FirebaseStorageInteractorImpl implements FirebaseStorageInteractor 
 
     @Override
     public void uploadImageToStorage(byte[] imageBytes, RequestListener<String> listener) {
-
     }
 }

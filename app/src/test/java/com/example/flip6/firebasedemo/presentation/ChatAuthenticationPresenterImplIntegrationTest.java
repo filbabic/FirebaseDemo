@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.*;
@@ -24,8 +25,13 @@ public class ChatAuthenticationPresenterImplIntegrationTest {
     @Mock
     private ChatAuthView chatAuthView;
 
+    private final String VALID_EMAIL = "email@net.com";
+
+    private final String VALID_PASSWORD = "password";
+
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new ChatAuthenticationPresenterImpl(interactor);
         presenter.setView(chatAuthView);
     }
@@ -46,7 +52,7 @@ public class ChatAuthenticationPresenterImplIntegrationTest {
 
     @Test
     public void testLogTheUserInValidData() throws Exception {
-        presenter.logTheUserIn("email", "password");
+        presenter.logTheUserIn(VALID_EMAIL, VALID_PASSWORD);
         verify(chatAuthView).showProgressBar();
         verify(interactor).logTheUserIn(anyString(), anyString(), any(ResponseListener.class));
     }

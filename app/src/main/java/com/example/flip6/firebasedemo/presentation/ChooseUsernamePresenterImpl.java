@@ -17,8 +17,10 @@ public class ChooseUsernamePresenterImpl implements ChooseUsernamePresenter {
 
     @Override
     public void handleUserClickedChooseUsernameButton(String username) {
-        if (!StringUtils.StringEmptyOrNull(username)) {
+        if (!StringUtils.stringEmptyOrNull(username)) {
             chooseUsernameView.proceedWithUserRegistration(username);
+        } else {
+            chooseUsernameView.showUsernameCannotBeEmptyToast();
         }
     }
 }

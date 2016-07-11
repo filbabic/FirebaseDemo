@@ -26,5 +26,6 @@ public class FirebaseRemoteConfigInteractorImpl implements FirebaseRemoteConfigI
 
     @Override
     public void syncWithBackend() {
+
     }
 }

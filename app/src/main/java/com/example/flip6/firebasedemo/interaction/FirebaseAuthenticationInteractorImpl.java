@@ -26,7 +26,6 @@ public class FirebaseAuthenticationInteractorImpl implements FirebaseAuthenticat
 
     @Override
     public void logTheUserOut() {
-        firebaseAuth.signOut();
     }
 
     @Override

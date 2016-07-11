@@ -1,9 +1,11 @@
 package com.example.flip6.firebasedemo.common.model;
 
+import com.example.flip6.firebasedemo.common.utils.StringUtils;
+
 /**
  * Created by flip6 on 16.6.2016..
  */
-public class MessageModel {
+public class MessageModel extends BaseModel {
     private String message;
     private String author;
     private String authorImageURL;
@@ -39,5 +41,10 @@ public class MessageModel {
 
     public void setAuthorImageURL(String authorImageURL) {
         this.authorImageURL = authorImageURL;
+    }
+
+    @Override
+    protected boolean validateModel() {
+        return !StringUtils.stringEmptyOrNull(message, author, authorImageURL);
     }
 }

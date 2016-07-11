@@ -31,10 +31,10 @@ public class RequestPresenterImpl implements RequestPresenter {
         return new RequestListener<MessageModel>() {
             @Override
             public void onSuccessfulRequest(MessageModel callback) {
-                if (callback != null) { //successful request
+                if (callback != null) { //successful request and parse
                     requestView.setReceivedMessage(callback.getMessage());
                     requestView.setMessageAuthor(callback.getAuthor());
-                } else { //bad parse
+                } else { //parsed the wrong object
                     requestView.showOnWrongReferenceErrorMessage();
                 }
             }

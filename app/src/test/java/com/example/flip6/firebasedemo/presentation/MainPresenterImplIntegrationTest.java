@@ -7,9 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 /**
  * Created by flip6 on 8.7.2016..
@@ -20,8 +22,11 @@ public class MainPresenterImplIntegrationTest {
     @Mock
     private MainView mainView;
 
+    private final int NO_INTERACTIONS_SWITCH_CASE = 5;
+
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         presenter = new MainPresenterImpl();
         presenter.setView(mainView);
     }
@@ -63,7 +68,7 @@ public class MainPresenterImplIntegrationTest {
 
     @Test
     public void testHandleMenuItemClickNoInteraction() throws Exception {
-        presenter.handleMenuItemClick(5);
+        presenter.handleMenuItemClick(NO_INTERACTIONS_SWITCH_CASE);
         verify(mainView).closeNavigationDrawer();
         verifyNoMoreInteractions(mainView);
     }
@@ -72,5 +77,6 @@ public class MainPresenterImplIntegrationTest {
     public void testHandleUserClickedHomeButton() throws Exception {
         presenter.handleUserClickedHomeButton();
         verify(mainView).openNavigationDrawer();
+        verifyNoMoreInteractions(mainView);
     }
 }

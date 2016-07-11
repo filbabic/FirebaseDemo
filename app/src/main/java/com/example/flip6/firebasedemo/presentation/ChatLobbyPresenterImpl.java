@@ -1,6 +1,7 @@
 package com.example.flip6.firebasedemo.presentation;
 
 import com.example.flip6.firebasedemo.common.model.MessageModel;
+import com.example.flip6.firebasedemo.common.utils.StringUtils;
 import com.example.flip6.firebasedemo.interaction.FirebaseAuthenticationInteractor;
 import com.example.flip6.firebasedemo.interaction.FirebaseDatabaseInteractor;
 import com.example.flip6.firebasedemo.view.ChatLobbyView;
@@ -35,8 +36,10 @@ public class ChatLobbyPresenterImpl implements ChatLobbyPresenter {
 
     @Override
     public void sendChatMessage(String message) {
-        if (message != null) {
+        if (!StringUtils.stringEmptyOrNull(message)) {
             databaseInteractor.sendMessage(message, authenticationInteractor.getLoggedInUserDisplayName(), authenticationInteractor.getLoggedInUserImageURL());
+        } else {
+            chatLobbyView.showMessageCannotBeEmpty();
         }
     }
 
@@ -68,6 +71,6 @@ public class ChatLobbyPresenterImpl implements ChatLobbyPresenter {
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
-        };
+        }; //for now only onChildAdded is what we need
     }
 }
