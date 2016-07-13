@@ -47,7 +47,7 @@ public class PresentationModuleTest {
 
     @Test
     public void testProvideUserImagePresenterNotNull() throws Exception {
-        assertNotNull(presentationModule.provideUserImagePresenter(storageInteractor));
+        assertNotNull(presentationModule.provideUserImagePresenter(storageInteractor, authenticationInteractor));
     }
 
     @Test
@@ -83,5 +83,10 @@ public class PresentationModuleTest {
     @Test
     public void testProvideUserAccountDetailsPresenterNotNull() throws Exception {
         assertNotNull(presentationModule.provideUserAccountDetailsPresenter(authenticationInteractor));
+    }
+
+    @Test
+    public void testProvideRequestAuthPresenterNotNull() throws Exception {
+        assertNotNull(presentationModule.provideRequestAuthPresenter(authenticationInteractor));
     }
 }

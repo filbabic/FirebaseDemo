@@ -9,7 +9,8 @@ import com.example.flip6.firebasedemo.ui.main.MainActivity;
 import com.example.flip6.firebasedemo.ui.registration.ChooseUsernameFragment;
 import com.example.flip6.firebasedemo.ui.registration.UserAccountDetailsFragment;
 import com.example.flip6.firebasedemo.ui.remote.RemoteConfigActivity;
-import com.example.flip6.firebasedemo.ui.request.RequestActivity;
+import com.example.flip6.firebasedemo.ui.request.RequestAuthenticationFragment;
+import com.example.flip6.firebasedemo.ui.request.RequestFragment;
 import com.example.flip6.firebasedemo.ui.registration.UserImageFragment;
 
 import javax.inject.Singleton;
@@ -24,7 +25,7 @@ import dagger.Component;
 public interface AppComponent {
     void inject(App app);
 
-    void inject(RequestActivity requestActivity);
+    void inject(RequestFragment requestFragment);
 
     void inject(UserImageFragment userImageFragment);
 
@@ -43,4 +44,6 @@ public interface AppComponent {
     void inject(UserAccountDetailsFragment userAccountDetailsFragment);
 
     void inject(ChooseUsernameFragment chooseUsernameFragment);
+
+    void inject(RequestAuthenticationFragment requestAuthenticationFragment);
 }

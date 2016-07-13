@@ -10,7 +10,5 @@ public interface UserAccountDetailsPresenter extends Presenter<UserAccountDetail
 
     void setUsername(String username);
 
-    void setImageURL(String imageURL);
-
     void logCurrentUserOut();
 }

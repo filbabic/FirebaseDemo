@@ -81,7 +81,7 @@ public class ChooseUsernameFragment extends BaseFragment implements View.OnClick
         getActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.register_activity_frame_layout, UserImageFragment.newInstance(createBundleData(username)))
+                .replace(R.id.register_activity_frame_layout, UserAccountDetailsFragment.newInstance(createBundleData(username)))
                 .commit();
     }
 

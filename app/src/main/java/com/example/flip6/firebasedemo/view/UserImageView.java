@@ -10,9 +10,9 @@ public interface UserImageView {
 
     void startTakeAPhotoActivity();
 
+    void loadImageFromResources();
+
     void showOnSuccessfulUploadToast();
 
     void showFailedUploadToast();
-
-    void proceedWithUserRegistration(String imageURL, String username);
 }

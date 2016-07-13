@@ -14,6 +14,11 @@ public class CrashPresenterImpl implements CrashPresenter {
     }
 
     @Override
+    public void setView(CrashView view) {
+        this.crashView = view;
+    }
+
+    @Override
     public void handleUserClickedButton(int buttonID) {
         switch (buttonID) {
             case R.id.button_null_pointer: {
@@ -31,10 +36,5 @@ public class CrashPresenterImpl implements CrashPresenter {
             default:
                 break;
         }
-    }
-
-    @Override
-    public void setView(CrashView view) {
-        this.crashView = view;
     }
 }

@@ -13,11 +13,11 @@ public interface FirebaseAuthenticationInteractor {
 
     void logTheUserOut();
 
-    boolean isUserOnline();
-
     String getLoggedInUserDisplayName();
 
-    void changeUserProfileData(String usernameToSet, String userImageURL);
+    void changeUserDisplayName(String usernameToSet);
+
+    void changeUserImageUrl(String imageUrl);
 
     String getLoggedInUserImageURL();
 }

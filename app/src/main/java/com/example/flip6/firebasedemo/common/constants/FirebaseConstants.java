@@ -5,6 +5,6 @@ package com.example.flip6.firebasedemo.common.constants;
  */
 public class FirebaseConstants {
     public static final String MESSAGE_REFERENCE = "/messages";
-    public static final String TEST_MESSAGE_LOCATION = "/test";
+    public static final String TEST_LOCATION = "/test";
     public static final String USER_REFERENCE = "/users";
 }

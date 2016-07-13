@@ -11,10 +11,16 @@ import com.example.flip6.firebasedemo.view.ChatAuthView;
 
 public class ChatAuthenticationPresenterImpl implements ChatAuthenticationPresenter {
     private final FirebaseAuthenticationInteractor firebaseAuthenticationInteractor;
+
     private ChatAuthView chatAuthView;
 
     public ChatAuthenticationPresenterImpl(FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
         this.firebaseAuthenticationInteractor = firebaseAuthenticationInteractor;
+    }
+
+    @Override
+    public void setView(ChatAuthView view) {
+        this.chatAuthView = view;
     }
 
     @Override
@@ -44,8 +50,4 @@ public class ChatAuthenticationPresenterImpl implements ChatAuthenticationPresen
         };
     }
 
-    @Override
-    public void setView(ChatAuthView view) {
-        this.chatAuthView = view;
-    }
 }

@@ -2,6 +2,7 @@ package com.example.flip6.firebasedemo.ui.crash;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
@@ -30,6 +31,9 @@ public class CrashActivity extends BaseActivity implements View.OnClickListener,
     @BindView(R.id.button_class_cast)
     Button mClassCastButton;
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
     @Inject
     CrashPresenter presenter;
 
@@ -52,6 +56,7 @@ public class CrashActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initUI() {
+        mToolbar.setTitle(R.string.crash_activity_title);
         mNullpointerButton.setOnClickListener(this);
         mOutOfBoundsButton.setOnClickListener(this);
         mClassCastButton.setOnClickListener(this);
@@ -65,7 +70,6 @@ public class CrashActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void causeNullpointerCrash() {
         if (nullString.isEmpty()) {
-            //called a method on a null object reference
         }
     }
 

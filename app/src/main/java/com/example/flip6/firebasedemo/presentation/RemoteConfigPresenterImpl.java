@@ -17,6 +17,11 @@ public class RemoteConfigPresenterImpl implements RemoteConfigPresenter {
     }
 
     @Override
+    public void setView(RemoteConfigView view) {
+        this.remoteConfigView = view;
+    }
+
+    @Override
     public void fetchRemoteConfigValues() {
         if (firebaseRemoteConfigInteractor.isItemOnDiscount()) {
             remoteConfigView.setItemIsOnDiscount(true);
@@ -29,10 +34,5 @@ public class RemoteConfigPresenterImpl implements RemoteConfigPresenter {
     @Override
     public void syncDataWithBackend() {
         firebaseRemoteConfigInteractor.syncWithBackend();
-    }
-
-    @Override
-    public void setView(RemoteConfigView view) {
-        this.remoteConfigView = view;
     }
 }

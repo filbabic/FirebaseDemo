@@ -2,10 +2,10 @@ package com.example.flip6.firebasedemo.ui.registration;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,12 +42,6 @@ public class UserImageFragment extends BaseFragment implements View.OnClickListe
     @Inject
     UserImagePresenter presenter;
 
-    public static UserImageFragment newInstance(Bundle data) {
-        UserImageFragment f = new UserImageFragment();
-        f.setArguments(data);
-        return f;
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,11 +57,11 @@ public class UserImageFragment extends BaseFragment implements View.OnClickListe
         prepareData();
     }
 
-    private void initUI() {
+    protected void initUI() {
         mTakeAPhotoButton.setOnClickListener(this);
     }
 
-    protected void prepareData(){
+    protected void prepareData() {
         presenter.setView(this);
     }
 
@@ -106,6 +100,12 @@ public class UserImageFragment extends BaseFragment implements View.OnClickListe
     }
 
     @Override
+    public void loadImageFromResources() { //use this rather than startTakePhotoActivity if it is being run on an emulator
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        presenter.uploadImageToStorage(ImageHelper.getImageByteArray(bitmap));
+    }
+
+    @Override
     public void showOnSuccessfulUploadToast() {
         Toast.makeText(App.get(), R.string.successful_upload_toast, Toast.LENGTH_SHORT).show();
     }
@@ -116,27 +116,6 @@ public class UserImageFragment extends BaseFragment implements View.OnClickListe
     }
 
     @Override
-    public void proceedWithUserRegistration(String imageURL, String username) {
-        getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.register_activity_frame_layout, UserAccountDetailsFragment.newInstance(createDataBundle(imageURL, username)))
-                .commit();
-    }
-
-    protected Bundle createDataBundle(String imageURL, String username) {
-        Bundle data = new Bundle();
-        data.putString(Constants.USER_IMAGE_BUNDLE_KEY, imageURL);
-        data.putString(Constants.USERNAME_BUNDLE_KEY, username);
-        return data;
-    }
-
-    @Override
     protected void receiveBundleArguments() {
-        Bundle data = this.getArguments();
-        if (data != null && data.containsKey(Constants.USERNAME_BUNDLE_KEY)) {
-            presenter.setUsername(data.getString(Constants.USERNAME_BUNDLE_KEY));
-        }
     }
 }

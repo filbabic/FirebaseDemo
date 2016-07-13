@@ -1,6 +1,7 @@
 package com.example.flip6.firebasedemo.ui.common.image;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 import java.io.ByteArrayOutputStream;
 
@@ -16,5 +17,9 @@ public class ImageHelper {
             return byteArrayOutputStream.toByteArray();
         }
         return null;
+    }
+
+    public static Uri getImageURIFromString(String imageURI) {
+        return Uri.parse(imageURI);
     }
 }

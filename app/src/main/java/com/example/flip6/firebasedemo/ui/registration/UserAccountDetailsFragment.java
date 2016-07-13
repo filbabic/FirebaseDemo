@@ -2,6 +2,7 @@ package com.example.flip6.firebasedemo.ui.registration;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,13 +64,13 @@ public class UserAccountDetailsFragment extends BaseFragment implements UserAcco
         prepareData();
     }
 
-    private void prepareData() {
+    protected void prepareData() {
         presenter.setView(this);
         receiveBundleArguments();
         presenter.logCurrentUserOut(); //in case someone is already logged in
     }
 
-    private void initUI(View view) {
+    protected void initUI(View view) {
         ButterKnife.bind(this, view);
         mRegisterButton.setOnClickListener(this);
     }
@@ -77,9 +78,8 @@ public class UserAccountDetailsFragment extends BaseFragment implements UserAcco
     @Override
     protected void receiveBundleArguments() {
         Bundle data = this.getArguments();
-        if (data != null && data.containsKey(Constants.USERNAME_BUNDLE_KEY) && data.containsKey(Constants.USER_IMAGE_BUNDLE_KEY)) {
+        if (data != null && data.containsKey(Constants.USERNAME_BUNDLE_KEY)) {
             presenter.setUsername(data.getString(Constants.USERNAME_BUNDLE_KEY));
-            presenter.setImageURL(data.getString(Constants.USER_IMAGE_BUNDLE_KEY));
         }
     }
 
@@ -113,5 +113,15 @@ public class UserAccountDetailsFragment extends BaseFragment implements UserAcco
     @Override
     public void showAllFieldsMustBeFilledMessage() {
         Toast.makeText(App.get(), R.string.fields_are_emtpy_toast_message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void moveUserToChooseImageFragment() {
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.register_activity_frame_layout, new UserImageFragment())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
     }
 }

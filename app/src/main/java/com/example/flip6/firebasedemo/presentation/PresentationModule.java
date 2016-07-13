@@ -25,8 +25,8 @@ public class PresentationModule {
     }
 
     @Provides
-    public UserImagePresenter provideUserImagePresenter(FirebaseStorageInteractor firebaseStorageInteractor) {
-        return new UserImagePresenterImpl(firebaseStorageInteractor);
+    public UserImagePresenter provideUserImagePresenter(FirebaseStorageInteractor firebaseStorageInteractor, FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
+        return new UserImagePresenterImpl(firebaseStorageInteractor, firebaseAuthenticationInteractor);
     }
 
     @Provides
@@ -62,5 +62,10 @@ public class PresentationModule {
     @Provides
     public UserAccountDetailsPresenter provideUserAccountDetailsPresenter(FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
         return new UserAccountDetailsPresenterImpl(firebaseAuthenticationInteractor);
+    }
+
+    @Provides
+    public RequestAuthPresenter provideRequestAuthPresenter(FirebaseAuthenticationInteractor firebaseAuthenticationInteractor) {
+        return new RequestAuthPresenterImpl(firebaseAuthenticationInteractor);
     }
 }

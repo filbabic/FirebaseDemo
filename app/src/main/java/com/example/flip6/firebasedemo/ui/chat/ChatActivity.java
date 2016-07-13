@@ -30,6 +30,7 @@ public class ChatActivity extends BaseActivity {
         setContentView(R.layout.activity_chat);
         ButterKnife.bind(this);
         App.get().component().inject(this);
+
         if (savedInstanceState == null) {
             initFragment();
             prepareData();

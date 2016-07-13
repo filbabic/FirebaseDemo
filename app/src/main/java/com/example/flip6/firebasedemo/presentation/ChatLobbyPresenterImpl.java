@@ -43,11 +43,10 @@ public class ChatLobbyPresenterImpl implements ChatLobbyPresenter {
         }
     }
 
-
     protected ChildEventListener bindChatMessageListener() {
         return new ChildEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {//new message appears on firebase
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) { //new message appears on firebase
                 if (dataSnapshot != null) {
                     MessageModel model = dataSnapshot.getValue(MessageModel.class);
                     if (model != null) {

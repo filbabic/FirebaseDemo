@@ -11,7 +11,6 @@ import com.example.flip6.firebasedemo.view.UserAccountDetailsView;
 
 public class UserAccountDetailsPresenterImpl implements UserAccountDetailsPresenter {
     private String username;
-    private String imageURL;
 
     private UserAccountDetailsView userAccountDetailsView;
     private final FirebaseAuthenticationInteractor firebaseAuthenticationInteractor;
@@ -23,11 +22,6 @@ public class UserAccountDetailsPresenterImpl implements UserAccountDetailsPresen
     @Override
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    @Override
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     @Override
@@ -54,9 +48,10 @@ public class UserAccountDetailsPresenterImpl implements UserAccountDetailsPresen
         return new ResponseListener() {
             @Override
             public void onSuccessfulAuthentication() {
+                firebaseAuthenticationInteractor.changeUserDisplayName(username);
                 userAccountDetailsView.hideProgressBar();
                 userAccountDetailsView.showSuccessfulRegisterMessage();
-                firebaseAuthenticationInteractor.changeUserProfileData(username, imageURL);
+                userAccountDetailsView.moveUserToChooseImageFragment();
             }
 
             @Override

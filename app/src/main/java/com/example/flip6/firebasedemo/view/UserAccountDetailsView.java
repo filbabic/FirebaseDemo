@@ -13,4 +13,6 @@ public interface UserAccountDetailsView {
     void showSuccessfulRegisterMessage();
 
     void showAllFieldsMustBeFilledMessage();
+
+    void moveUserToChooseImageFragment();
 }

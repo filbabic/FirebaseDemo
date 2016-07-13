@@ -23,6 +23,7 @@
     <item name="start_database_activity_button" type="id" />
     <item name="start_storage_activity_button" type="id" />
     <item name="message_edit_text" type="id" />
+    <item name="request_activity_frame_layout" type="id" />
     <item name="send_message_button" type="id" />
     <item name="remote_config_text_view" type="id" />
     <item name="remote_config_item_is_on_discount_check_box" type="id" />

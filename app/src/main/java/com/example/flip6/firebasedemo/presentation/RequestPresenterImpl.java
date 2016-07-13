@@ -18,6 +18,11 @@ public class RequestPresenterImpl implements RequestPresenter {
     }
 
     @Override
+    public void setView(RequestView view) {
+        this.requestView = view;
+    }
+
+    @Override
     public void requestFromValidLink() {
         databaseInteractor.requestFromValidLink(bindMessageRequestListener());
     }
@@ -41,13 +46,8 @@ public class RequestPresenterImpl implements RequestPresenter {
 
             @Override
             public void onFailedRequest() {
-                requestView.showOnFailedToRequest(); //no net connection
+                requestView.showOnFailedToRequest(); //e.g. no net connection
             }
         };
-    }
-
-    @Override
-    public void setView(RequestView view) {
-        this.requestView = view;
     }
 }

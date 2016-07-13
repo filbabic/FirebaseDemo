@@ -2,6 +2,7 @@ package com.example.flip6.firebasedemo.presentation;
 
 
 import com.example.flip6.firebasedemo.common.RequestListener;
+import com.example.flip6.firebasedemo.interaction.FirebaseAuthenticationInteractor;
 import com.example.flip6.firebasedemo.interaction.FirebaseStorageInteractor;
 import com.example.flip6.firebasedemo.view.UserImageView;
 
@@ -11,22 +12,17 @@ import com.example.flip6.firebasedemo.view.UserImageView;
 
 public class UserImagePresenterImpl implements UserImagePresenter {
     private final FirebaseStorageInteractor storageInteractor;
+    private final FirebaseAuthenticationInteractor interactor;
     private UserImageView userImageView;
 
-    private String username;
-
-    public UserImagePresenterImpl(FirebaseStorageInteractor storageInteractor) {
+    public UserImagePresenterImpl(FirebaseStorageInteractor storageInteractor, FirebaseAuthenticationInteractor interactor) {
         this.storageInteractor = storageInteractor;
+        this.interactor = interactor;
     }
 
     @Override
     public void setView(UserImageView view) {
         this.userImageView = view;
-    }
-
-    @Override
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     @Override
@@ -46,7 +42,7 @@ public class UserImagePresenterImpl implements UserImagePresenter {
         return new RequestListener<String>() {
             @Override
             public void onSuccessfulRequest(String callback) {
-                userImageView.proceedWithUserRegistration(callback, username);
+                interactor.changeUserImageUrl(callback);
                 userImageView.hideUploadingProgressBar();
                 userImageView.showOnSuccessfulUploadToast();
             }
@@ -58,5 +54,4 @@ public class UserImagePresenterImpl implements UserImagePresenter {
             }
         };
     }
-
 }

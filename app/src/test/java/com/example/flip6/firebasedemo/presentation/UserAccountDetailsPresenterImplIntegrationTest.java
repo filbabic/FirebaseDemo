@@ -26,7 +26,6 @@ public class UserAccountDetailsPresenterImplIntegrationTest {
     private FirebaseAuthenticationInteractor authenticationInteractor;
 
     private final String VALID_USERNAME = "username";
-    private final String VALID_IMAGE_URL = "imageURL";
     private final String VALID_EMAIL = "email@net.com";
     private final String VALID_PASSWORD = "password";
 
@@ -36,7 +35,6 @@ public class UserAccountDetailsPresenterImplIntegrationTest {
         presenter = new UserAccountDetailsPresenterImpl(authenticationInteractor);
         presenter.setView(userAccountDetailsView);
         presenter.setUsername(VALID_USERNAME);
-        presenter.setImageURL(VALID_IMAGE_URL);
     }
 
     @Test
@@ -73,7 +71,8 @@ public class UserAccountDetailsPresenterImplIntegrationTest {
         presenter.bindUserRegisterListener().onSuccessfulAuthentication();
         verify(userAccountDetailsView).hideProgressBar();
         verify(userAccountDetailsView).showSuccessfulRegisterMessage();
-        verify(authenticationInteractor).changeUserProfileData(anyString(), anyString());
+        verify(authenticationInteractor).changeUserDisplayName(anyString());
+        verify(userAccountDetailsView).moveUserToChooseImageFragment();
         verifyNoMoreInteractions(userAccountDetailsView, authenticationInteractor);
     }
 

@@ -38,4 +38,5 @@
     <string name="chat_activity_title">Chat</string>
     <string name="remote_config_activity_title">Remote config</string>
     <string name="request_activity_title">Request</string>
+    <string name="crash_activity_title">Crash the app</string>
 </resources>

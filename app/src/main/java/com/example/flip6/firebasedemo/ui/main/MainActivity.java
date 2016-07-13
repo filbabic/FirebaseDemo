@@ -58,12 +58,14 @@ public class MainActivity extends BaseActivity implements MainView, NavigationVi
     protected void initUI() {
         mToolbar.setTitle(R.string.app_name);
         setSupportActionBar(mToolbar);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
         mNavigationDrawer.setNavigationItemSelectedListener(this);
     }
 

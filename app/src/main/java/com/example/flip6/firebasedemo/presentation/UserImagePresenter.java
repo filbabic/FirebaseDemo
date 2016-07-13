@@ -9,6 +9,4 @@ public interface UserImagePresenter extends Presenter<UserImageView> {
     void handleOnUserClickedTakeAPhotoButton();
 
     void uploadImageToStorage(byte[] imageByteArray);
-
-    void setUsername(String username);
 }

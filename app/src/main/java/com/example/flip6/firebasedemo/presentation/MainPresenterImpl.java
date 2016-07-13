@@ -13,6 +13,11 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
+    public void setView(MainView view) {
+        this.mainView = view;
+    }
+
+    @Override
     public void handleMenuItemClick(int menuItemId) {
         mainView.closeNavigationDrawer();
         switch (menuItemId) {
@@ -44,10 +49,5 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void handleUserClickedHomeButton() {
         mainView.openNavigationDrawer();
-    }
-
-    @Override
-    public void setView(MainView view) {
-        this.mainView = view;
     }
 }

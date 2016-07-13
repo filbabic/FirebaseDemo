@@ -1,6 +1,7 @@
 package com.example.flip6.firebasedemo.presentation;
 
 import com.example.flip6.firebasedemo.common.RequestListener;
+import com.example.flip6.firebasedemo.interaction.FirebaseAuthenticationInteractor;
 import com.example.flip6.firebasedemo.interaction.FirebaseStorageInteractor;
 import com.example.flip6.firebasedemo.view.UserImageView;
 
@@ -11,7 +12,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 /**
  * Created by flip6 on 8.7.2016..
@@ -23,17 +28,17 @@ public class UserImagePresenterImplIntegrationTest {
     private UserImageView userImageView;
     @Mock
     private FirebaseStorageInteractor storageInteractor;
+    @Mock
+    private FirebaseAuthenticationInteractor authenticationInteractor;
 
-    private final String VALID_USERNAME = "username";
     private final String VALID_IMAGE_URL = "imageURL";
     private final byte[] imageBytes = new byte[50];
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new UserImagePresenterImpl(storageInteractor);
+        presenter = new UserImagePresenterImpl(storageInteractor, authenticationInteractor);
         presenter.setView(userImageView);
-        presenter.setUsername(VALID_USERNAME);
     }
 
     @Test
@@ -60,7 +65,7 @@ public class UserImagePresenterImplIntegrationTest {
     @Test
     public void testBindImageUploadResponseListenerOnSuccessfulRequest() throws Exception {
         presenter.bindImageUploadResponseListener().onSuccessfulRequest(VALID_IMAGE_URL);
-        verify(userImageView).proceedWithUserRegistration(anyString(), anyString());
+        verify(authenticationInteractor).changeUserImageUrl(anyString());
         verify(userImageView).hideUploadingProgressBar();
         verify(userImageView).showOnSuccessfulUploadToast();
         verifyNoMoreInteractions(userImageView, storageInteractor);

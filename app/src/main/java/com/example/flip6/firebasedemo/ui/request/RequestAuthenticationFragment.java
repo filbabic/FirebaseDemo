@@ -1,4 +1,4 @@
-package com.example.flip6.firebasedemo.ui.chat;
+package com.example.flip6.firebasedemo.ui.request;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,14 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.flip6.firebasedemo.App;
 import com.example.flip6.firebasedemo.R;
-import com.example.flip6.firebasedemo.presentation.ChatAuthenticationPresenter;
+import com.example.flip6.firebasedemo.presentation.RequestAuthPresenter;
 import com.example.flip6.firebasedemo.ui.base.BaseFragment;
-import com.example.flip6.firebasedemo.view.ChatAuthView;
+import com.example.flip6.firebasedemo.view.RequestAuthView;
 
 import javax.inject.Inject;
 
@@ -23,10 +22,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Filip on 04/07/2016.
+ * Created by cobe on 13/07/16.
  */
 
-public class ChatAuthFragment extends BaseFragment implements ChatAuthView, View.OnClickListener {
+public class RequestAuthenticationFragment extends BaseFragment implements RequestAuthView, View.OnClickListener {
+
     @BindView(R.id.email_edit_text)
     EditText mEmailEditText;
 
@@ -36,11 +36,8 @@ public class ChatAuthFragment extends BaseFragment implements ChatAuthView, View
     @BindView(R.id.login_button)
     Button mLoginButton;
 
-    @BindView(R.id.progress_bar)
-    ProgressBar mAuthProgressBar;
-
     @Inject
-    ChatAuthenticationPresenter presenter;
+    RequestAuthPresenter presenter;
 
     @Nullable
     @Override
@@ -56,8 +53,8 @@ public class ChatAuthFragment extends BaseFragment implements ChatAuthView, View
         prepareData();
     }
 
-    protected void prepareData() {
-        presenter.setView(this);
+    @Override
+    protected void receiveBundleArguments() {
     }
 
     protected void initUI(View view) {
@@ -65,43 +62,28 @@ public class ChatAuthFragment extends BaseFragment implements ChatAuthView, View
         mLoginButton.setOnClickListener(this);
     }
 
-    @Override
-    protected void receiveBundleArguments() {
+    protected void prepareData() {
+        presenter.setView(this);
     }
 
     @Override
-    public void showInvalidLoginDataMessage() {
+    public void showFieldsAreEmptyMessage() {
+        Toast.makeText(App.get(), R.string.fields_are_emtpy_toast_message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showInvalidDataMessage() {
         Toast.makeText(App.get(), R.string.invalid_login_toast_message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showSuccessfulLoginMessage() {
-        Toast.makeText(App.get(), R.string.successful_login_toast_message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void moveUserToChatLobby() {
+    public void moveUserToRequestFragment() {
         getActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.chat_activity_frame_layout, new ChatLobbyFragment())
+                .replace(R.id.request_activity_frame_layout, new RequestFragment())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
-    }
-
-    @Override
-    public void showProgressBar() {
-        mAuthProgressBar.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideProgressBar() {
-        mAuthProgressBar.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void showFillInAllFieldsMessage() {
-        Toast.makeText(App.get(), R.string.fields_are_emtpy_toast_message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
